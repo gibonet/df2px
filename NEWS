@@ -1,0 +1,27 @@
+
+df2px 0.0.1
+----------------------------------------------------------------
+
+NEW FEATURES
+
+* Argument 'info' added to the function 'to_px2'. This sets the name
+  of the column that contains the information on how to treat various
+  missing values in .px file created from the data cube.
+* It is now possible to create .px files with only one numeric
+  column, if the argument 'measure_name' is equal to NULL (function
+  'to_px2'). This will create a .px file without the HEADER keyword.
+* The name of the argument 'measure_var' has been changed to 
+  'measure_vars' (functions 'to_px' and 'to_px2')
+* Argument 'TITLE' added to the function 'to_px2'
+* Argument 'PRECISION' added to the function 'to_px2' (experimental)
+* Argument 'SHOWDECIMALS' added to the function 'to_px2'
+
+
+
+df2px 0.0.0
+----------------------------------------------------------------
+
+NEW FEATURES
+
+* Very first version of the package. There are two functions:
+  'to_px' and 'to_px2'
