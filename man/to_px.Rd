@@ -7,9 +7,9 @@
 \usage{
 to_px(.cube, vars, measure_vars, measure_name)
 
-to_px2(.cube, vars, measure_vars, measure_name = NULL, .symbols = c("X",
-  "...", "()"), TITLE = "Title unknown", PRECISION = NULL,
-  SHOWDECIMALS = 0, info = "info")
+to_px2(.cube, vars, measure_vars, measure_name = NULL,
+  .symbols = c("X", "...", "()"), TITLE = "Title unknown",
+  PRECISION = NULL, SHOWDECIMALS = 0, info = "info")
 }
 \arguments{
 \item{.cube}{a data cube in data frame format}
