@@ -8,8 +8,7 @@
 
 to_px4 <- function(.cube, vars, measure_vars, measure_name = NULL, 
                    .symbols = c("X", "...", "()"), TITLE = "Title unknown",
-                   PRECISION = NULL, SHOWDECIMALS = 0, info = "info",
-                   X_rule = NULL){
+                   PRECISION = NULL, SHOWDECIMALS = 0){
   livelli_variabili <- lapply(.cube[ , rev(vars)], function(x) as.character(unique(x)))
   
   # 1. Creazione STUB
