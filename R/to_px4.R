@@ -3,7 +3,8 @@
 # X_rule al posto di info
 # X_rule: un numero al di sotto del quale i dati non possono essere pubblicati (X)
 # Per il momento ho fatto in modo che le X vengano messe per tutti i valori inferiori
-# a X_rule e superiori a zero
+# a X_rule e superiori a zero.
+# Anzi cambio: in questa versione tutte le misure NA verranno pubblicate con delle X
 
 to_px4 <- function(.cube, vars, measure_vars, measure_name = NULL, 
                    .symbols = c("X", "...", "()"), TITLE = "Title unknown",
@@ -51,12 +52,13 @@ to_px4 <- function(.cube, vars, measure_vars, measure_name = NULL,
   
   # 4. Creazione DATA
   DATA <- .cube[ , measure_vars, drop = FALSE]
-  if(!is.null(X_rule)){
-    for(i in seq_along(measure_vars)){
-      k <- (DATA[[i]] < X_rule & DATA[[i]] > 0 & !is.na(DATA[[i]]))
-      DATA[[i]][k] <- "\"..\""
-    }
-  }
+  # if(!is.null(X_rule)){
+  #   for(i in seq_along(measure_vars)){
+  #     k <- (DATA[[i]] < X_rule & DATA[[i]] > 0 & !is.na(DATA[[i]]))
+  #     DATA[[i]][k] <- "\"..\""
+  #   }
+  # }
+  DATA[is.na(DATA)] <- "\"..\""
   
   # info <- .cube[[info]]  # colonna 'info' del cubo in formato semi-tidy
   # k_X <- info == .symbols[1]
