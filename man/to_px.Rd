@@ -17,7 +17,7 @@ to_px5(.cube, vars, measure_vars, measure_name = NULL,
   PRECISION = NULL, SHOWDECIMALS = 0, info = "info",
   CONTENTS = "unknown", MATRIX = "unknown", SUBJECT_AREA = "unknown",
   SUBJECT_CODE = "unknown", UNITS = "unknown", AGGREGALLOWED = "NO",
-  SOURCE = NULL, SURVEY = NULL)
+  SOURCE = NULL, SURVEY = NULL, REFPERIOD = NULL)
 }
 \arguments{
 \item{.cube}{a data cube in data frame format}
@@ -54,6 +54,8 @@ estimates}
 \item{SOURCE}{the organization responsible for the statistics (default = NULL)}
 
 \item{SURVEY}{name of the survey (default = NULL)}
+
+\item{REFPERIOD}{periods of the statistics (default = NULL)}
 }
 \description{
 Convert a data cube from data frame to a px file

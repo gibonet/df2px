@@ -10,6 +10,7 @@
 #' @param AGGREGALLOWED if the contents can or cannot be aggregated ("YES" or "NO", default = "NO")
 #' @param SOURCE the organization responsible for the statistics (default = NULL)
 #' @param SURVEY name of the survey (default = NULL)
+#' @param REFPERIOD periods of the statistics (default = NULL)
 #' 
 #' 
 #' @examples 
@@ -30,7 +31,7 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
                    CONTENTS = "unknown", MATRIX = "unknown",
                    SUBJECT_AREA = "unknown", SUBJECT_CODE = "unknown",
                    UNITS = "unknown", AGGREGALLOWED = "NO",
-                   SOURCE = NULL, SURVEY = NULL){
+                   SOURCE = NULL, SURVEY = NULL, REFPERIOD = NULL){
   livelli_variabili <- lapply(.cube[ , rev(vars)], function(x) as.character(unique(x)))
   
   # 1. Creazione STUB
@@ -130,6 +131,13 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
     SURVEY <- paste0("SURVEY=", SURVEY, ";")
   }
   
+  if(is.null(REFPERIOD)){
+    REFPERIOD <- NULL
+  }else{
+    REFPERIOD <- add_quotes(REFPERIOD)
+    REFPERIOD <- paste0("REFPERIOD=", REFPERIOD, ";")
+  }
+  
   TITLE <- add_quotes(TITLE)
   TITLE <- paste0(TITLE, ";")
   
@@ -174,6 +182,7 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
     SOURCE,
     SURVEY,
     keywords02,
+    REFPERIOD,
     DATASYMBOL2,
     DATASYMBOL3,
     DATASYMBOL5,
