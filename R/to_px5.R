@@ -11,6 +11,7 @@
 #' @param SOURCE the organization responsible for the statistics (default = NULL)
 #' @param SURVEY name of the survey (default = NULL)
 #' @param REFPERIOD periods of the statistics (default = NULL)
+#' @param NOTE character vector with one or more notes. Every element of the character vector will be a row of notes (default = NULL)
 #' 
 #' 
 #' @examples 
@@ -31,7 +32,8 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
                    CONTENTS = "unknown", MATRIX = "unknown",
                    SUBJECT_AREA = "unknown", SUBJECT_CODE = "unknown",
                    UNITS = "unknown", AGGREGALLOWED = "NO",
-                   SOURCE = NULL, SURVEY = NULL, REFPERIOD = NULL){
+                   SOURCE = NULL, SURVEY = NULL, REFPERIOD = NULL,
+                   NOTE = NULL){
   livelli_variabili <- lapply(.cube[ , rev(vars)], function(x) as.character(unique(x)))
   
   # 1. Creazione STUB
@@ -138,6 +140,15 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
     REFPERIOD <- paste0("REFPERIOD=", REFPERIOD, ";")
   }
   
+  if(is.null(NOTE)){
+    NOTE <- NULL
+  }else{
+    NOTE <- add_quotes(NOTE)
+    NOTE[1] <- paste0("NOTE=", NOTE[1])
+    NOTE[length(NOTE)] <- paste0(NOTE[length(NOTE)], ";")
+  }
+  
+  
   TITLE <- add_quotes(TITLE)
   TITLE <- paste0(TITLE, ";")
   
@@ -181,6 +192,7 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
     PRECISION,
     SOURCE,
     SURVEY,
+    NOTE,
     keywords02,
     REFPERIOD,
     DATASYMBOL2,
