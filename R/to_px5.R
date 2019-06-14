@@ -8,6 +8,8 @@
 #' @param SUBJECT_CODE subject area code (default = "unknown")
 #' @param UNITS unit text (default = "unknown")
 #' @param AGGREGALLOWED if the contents can or cannot be aggregated ("YES" or "NO", default = "NO")
+#' @param SOURCE the organization responsible for the statistics (default = NULL)
+#' @param SURVEY name of the survey (default = NULL)
 #' 
 #' 
 #' @examples 
@@ -27,7 +29,8 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
                    PRECISION = NULL, SHOWDECIMALS = 0, info = "info",
                    CONTENTS = "unknown", MATRIX = "unknown",
                    SUBJECT_AREA = "unknown", SUBJECT_CODE = "unknown",
-                   UNITS = "unknown", AGGREGALLOWED = "NO"){
+                   UNITS = "unknown", AGGREGALLOWED = "NO",
+                   SOURCE = NULL, SURVEY = NULL){
   livelli_variabili <- lapply(.cube[ , rev(vars)], function(x) as.character(unique(x)))
   
   # 1. Creazione STUB
@@ -113,6 +116,20 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
   
   last_updated <- gsub(pattern = "-", replacement = "", x = Sys.time())
   
+  if(is.null(SOURCE)){
+    SOURCE <- NULL
+  }else{
+    SOURCE <- add_quotes(SOURCE)
+    SOURCE <- paste0("SOURCE=", SOURCE, ";")
+  }
+  
+  if(is.null(SURVEY)){
+    SURVEY <- NULL
+  }else{
+    SURVEY <- add_quotes(SURVEY)
+    SURVEY <- paste0("SURVEY=", SURVEY, ";")
+  }
+  
   TITLE <- add_quotes(TITLE)
   TITLE <- paste0(TITLE, ";")
   
@@ -154,6 +171,8 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
     HEADING,
     VALUES,
     PRECISION,
+    SOURCE,
+    SURVEY,
     keywords02,
     DATASYMBOL2,
     DATASYMBOL3,
