@@ -144,8 +144,8 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
     NOTE <- NULL
   }else{
     NOTE <- add_quotes(NOTE)
-    NOTE[1] <- paste0("NOTE=", NOTE[1])
-    NOTE[length(NOTE)] <- paste0(NOTE[length(NOTE)], ";")
+    NOTE <- paste0("NOTE=", NOTE, ";")
+    # NOTE[length(NOTE)] <- paste0(NOTE[length(NOTE)], ";")
   }
   
   
