@@ -2,7 +2,7 @@ Package: df2px
 Title: Convert a Data Cube from Data Frame to px File
 Description: Convert a data cube in data frame format to a px file. The package is in
           an experimental state.
-Version: 0.0.3
+Version: 0.0.4
 License: GPL-2
 Author: Gibo <gibo.gaf@gmail.com>
 Maintainer: Gibo <gibo.gaf@gmail.com>

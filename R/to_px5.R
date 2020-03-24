@@ -77,10 +77,15 @@ to_px5 <- function(.cube, vars, measure_vars, measure_name = NULL,
   # 4. Creazione DATA
   DATA <- .cube[ , measure_vars, drop = FALSE]
   info <- .cube[[info]]  # colonna 'info' del cubo in formato semi-tidy
-  k_X <- info == .symbols[1]
-  k_dots <- info == .symbols[2]
-  DATA[k_X, ] <- "\"..\""
-  DATA[k_dots, ] <- "\"...\""
+  
+  if(!is.na(.symbols[1])){
+    k_X <- info == .symbols[1]
+    DATA[k_X, ] <- "\"..\""
+  }
+  if(!is.na(.symbols[2])){
+    k_dots <- info == .symbols[2]
+    DATA[k_dots, ] <- "\"...\""
+  } 
   # DATA[] <- lapply(DATA, round)
   DATA <- Reduce(paste, DATA)
   # DATA <- gsub("NA", "\"..\"", DATA)
