@@ -8,16 +8,39 @@
 \usage{
 to_px(.cube, vars, measure_vars, measure_name)
 
-to_px2(.cube, vars, measure_vars, measure_name = NULL,
-  .symbols = c("X", "...", "()"), TITLE = "Title unknown",
-  PRECISION = NULL, SHOWDECIMALS = 0, info = "info")
+to_px2(
+  .cube,
+  vars,
+  measure_vars,
+  measure_name = NULL,
+  .symbols = c("X", "...", "()"),
+  TITLE = "Title unknown",
+  PRECISION = NULL,
+  SHOWDECIMALS = 0,
+  info = "info"
+)
 
-to_px5(.cube, vars, measure_vars, measure_name = NULL,
-  .symbols = c("X", "...", "()"), TITLE = "Title unknown",
-  PRECISION = NULL, SHOWDECIMALS = 0, info = "info",
-  CONTENTS = "unknown", MATRIX = "unknown", SUBJECT_AREA = "unknown",
-  SUBJECT_CODE = "unknown", UNITS = "unknown", AGGREGALLOWED = "NO",
-  SOURCE = NULL, SURVEY = NULL, REFPERIOD = NULL, NOTE = NULL)
+to_px5(
+  .cube,
+  vars,
+  measure_vars,
+  measure_name = NULL,
+  .symbols = c("X", "...", "()"),
+  TITLE = "Title unknown",
+  PRECISION = NULL,
+  SHOWDECIMALS = 0,
+  info = "info",
+  CONTENTS = "unknown",
+  MATRIX = "unknown",
+  SUBJECT_AREA = "unknown",
+  SUBJECT_CODE = "unknown",
+  UNITS = "unknown",
+  AGGREGALLOWED = "NO",
+  SOURCE = NULL,
+  SURVEY = NULL,
+  REFPERIOD = NULL,
+  NOTE = NULL
+)
 }
 \arguments{
 \item{.cube}{a data cube in data frame format}
